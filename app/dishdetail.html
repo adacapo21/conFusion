@@ -47,8 +47,15 @@
         </div>
         <!--task2-->
         <div class="col-xs-9 col-xs-offset-1" ng-controller="DishCommentController">
+            <form class="form-inline">
+                <div class="form-group">
+                    <span class="text-bold">Customer Comments</span>
+                    <label for="filter" class="text-muted text-norm"> Sort by: </label>
+                    <input type="text" class="form-control" id="filter" ng-model="order">
+                </div>
+            </form>
             <ul>
-                <blockquote ng-repeat="comment in dish.comments">
+                <blockquote ng-repeat="comment in dish.comments | orderBy: order">
                     <p>{{comment.rating}} Stars</p>
                     <p>{{comment.comment}}</p>
                     <footer>{{comment.author}}, {{comment.date | date}}</footer>
