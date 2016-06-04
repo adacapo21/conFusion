@@ -94,3 +94,12 @@ body {
   position: absolute;
   right: 0px;
 }
+.hero{
+  width: 100%;
+  min-height: 350px;
+  background-position: center center;
+}
+.hero
+{
+  border: 1px solid #009900;
+}
