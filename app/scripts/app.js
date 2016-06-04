@@ -4,7 +4,7 @@
 'use strict';
 angular.module('confusionApp', [])
 
-    .controller('menuController', function() {
+    .controller('MenuController', ['$scope', function($scope) {
         this.tab = 1;
         this.filtText = '';
         var dishes=[
@@ -45,7 +45,13 @@ angular.module('confusionApp', [])
                 comment: ''
             }
         ];
-        this.dishes = dishes;
+        $scope.dishes = dishes;
+
+        $scope.showDetails = false;
+
+        $scope.toggleDetails = function() {
+            $scope.showDetails = !$scope.showDetails;
+        };
 
         this.select = function(setTab) {
             this.tab = setTab;
@@ -65,4 +71,29 @@ angular.module('confusionApp', [])
         this.isSelected = function (checkTab) {
             return (this.tab === checkTab);
         };
-    });
+    }])
+
+        .controller('ContactController', ['$scope', function($scope) {
+            $scope.feedback = {mychannel:"", firstName:"", lastName:"", agree:false, email:"" };
+            var channels = [{value:"tel", label:"Tel."}, {value:"Email",label:"Email"}];
+            $scope.channels = channels;
+            $scope.invalidChannelSelection = false;
+        }])
+            .controller('FeedbackController', ['$scope', function($scope) {
+                $scope.sendFeedback = function() {
+                    console.log($scope.feedback);
+                    if ($scope.feedback.agree && ($scope.feedback.mychannel == "")&& !$scope.feedback.mychannel) {
+                        $scope.invalidChannelSelection = true;
+                        console.log('incorrect');
+                    }
+                    else {
+                        $scope.invalidChannelSelection = false;
+                        $scope.feedback = {mychannel:"", firstName:"", lastName:"",
+                            agree:false, email:"" };
+                        $scope.feedback.mychannel="";
+
+                        $scope.feedbackForm.$setPristine();
+                        console.log($scope.feedback);
+                    }
+                };
+            }]);
