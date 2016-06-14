@@ -10,11 +10,11 @@
     <title>Ristorante Con Fusion: Menu</title>
     <!-- Bootstrap -->
     <!-- build:css styles/main.css -->
-    <link href="../public/lib/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="../public/lib/bootstrap/dist/css/bootstrap-theme.min.css" rel="stylesheet">
-    <link href="../public/lib/font-awesome/css/font-awesome.min.css" rel="stylesheet">
-    <link href="styles/bootstrap-social.css" rel="stylesheet">
-    <link href="styles/mystyles.css" rel="stylesheet">
+    <link href="../../public/lib/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../../public/lib/bootstrap/dist/css/bootstrap-theme.min.css" rel="stylesheet">
+    <link href="../../public/lib/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+    <link href="../styles/bootstrap-social.css" rel="stylesheet">
+    <link href="../styles/mystyles.css" rel="stylesheet">
     <!-- endbuild -->
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
@@ -106,6 +106,12 @@
                         <button type="submit" class="btn btn-primary"
                                 ng-disabled="commentForm.$invalid">Send Comment</button>
                     </div>
+                    <div class="col-xs-12">
+                        <button class="btn btn-xs btn-primary pull-right"
+                                type="button" ui-sref="app.menu">
+                            Back to Menu
+                        </button>
+                        <div class="media">
                 </div>
             </form>
         </div>
@@ -113,10 +119,12 @@
 </div>
 
 <!-- build:js scripts/main.js -->
-<script src="../public/lib/angular/angular.min.js"></script>
-<script src="scripts/app.js"></script>
-<script src="scripts/controllers.js"></script>
-<script src="scripts/services.js"></script>
+<script src="../../public/lib/angular/angular.min.js"></script>
+<script src="../../bower_components/angular-ui-router/release/angular-ui-router.min.js"></script>
+<script src="../../bower_components/angular-ui-router/release/angular-ui-router.js"></script>
+<script src="../scripts/app.js"></script>
+<script src="../scripts/controllers.js"></script>
+<script src="../scripts/services.js"></script>
 <!-- endbuild -->
 
 </body>

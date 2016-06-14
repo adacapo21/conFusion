@@ -10,11 +10,11 @@
     <title>Ristorante Con Fusion: Menu</title>
         <!-- Bootstrap -->
     <!-- build:css styles/main.css -->
-    <link href="../public/lib/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="../public/lib/bootstrap/dist/css/bootstrap-theme.min.css" rel="stylesheet">
-    <link href="../public/lib/font-awesome/css/font-awesome.min.css" rel="stylesheet">
-    <link href="styles/bootstrap-social.css" rel="stylesheet">
-    <link href="styles/mystyles.css" rel="stylesheet">
+    <link href="../../public/lib/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../../public/lib/bootstrap/dist/css/bootstrap-theme.min.css" rel="stylesheet">
+    <link href="../../public/lib/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+    <link href="../styles/bootstrap-social.css" rel="stylesheet">
+    <link href="../styles/mystyles.css" rel="stylesheet">
     <!-- endbuild -->
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
@@ -60,7 +60,7 @@
                 <ul class="media-list">
                     <li class="media" ng-repeat="dish in dishes | filter:filtText">
                         <div class="media-left media-middle">
-                            <a ng-href="#/menu/{{dish._id}}">
+                            <a ui-sref="app.dishdetails({id: dish._id})">
                                 <img class="media-object img-thumbnail"
                                      ng-src={{dish.image}} alt="Uthappizza">
                             </a>
@@ -77,12 +77,12 @@
         </div>
     </div>
     <!-- build:js scripts/main.js -->
-    <script src="../public/lib/angular/angular.min.js"></script>
-    <script src="../bower_components/angular-route/angular-route.min.js"></script>
-    <script src="../bower_components/angular-route/angular-route.js"></script>
-    <script src="scripts/app.js"></script>
-    <script src="scripts/controllers.js"></script>
-    <script src="scripts/services.js"></script>
+    <script src="../../public/lib/angular/angular.min.js"></script>
+    <script src="../../bower_components/angular-ui-router/release/angular-ui-router.min.js"></script>
+    <script src="../../bower_components/angular-ui-router/release/angular-ui-router.js"></script>
+    <script src="../scripts/app.js"></script>
+    <script src="../scripts/controllers.js"></script>
+    <script src="../scripts/services.js"></script>
 
     <!-- endbuild -->
 
