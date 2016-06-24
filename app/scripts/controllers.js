@@ -7,17 +7,8 @@ angular.module('confusionApp')
             $scope.tab = 1;
             $scope.filtText = '';
             $scope.showDetails = false;
-            $scope.showMenu = false;
-            $scope.message = "Loading ...";
-            menuFactory.getDishes().query(
-                function(response) {
-                    $scope.dishes = response;
-                    $scope.showMenu = true;
-                },
-                function(response) {
-                    $scope.message = "Error: "+response.status + " " + response.statusText;
-                });
 
+            $scope.dishes= menuFactory.getDishes();
 
                         
             $scope.select = function(setTab) {
@@ -79,63 +70,36 @@ angular.module('confusionApp')
 
         .controller('DishDetailController', ['$scope', '$stateParams', 'menuFactory', function($scope, $stateParams, menuFactory) {
 
-            $scope.dish = {};
-            $scope.showDish = false;
-            $scope.message="Loading ...";
-            $scope.dish = menuFactory.getDishes().get({id:parseInt($stateParams.id,10)})
-                .$promise.then(
-                    function(response){
-                        $scope.dish = response;
-                        $scope.showDish = true;
-                    },
-                    function(response) {
-                        $scope.message = "Error: "+response.status + " " + response.statusText;
-                    }
-                );
-            //από εδώ έπαιρνε τα data μεσα απο το αντικείμενο που του έχουμε φτιάξει
-            //var dish= menuFactory.getDish(parseInt($stateParams.id,10));
-            //
-            //$scope.dish = dish;
+            var dish= menuFactory.getDish(parseInt($stateParams.id,10));
+            
+            $scope.dish = dish;
             
         }])
 
-    .controller('DishCommentController', ['$scope', 'menuFactory', function($scope,menuFactory)  {
+        .controller('DishCommentController', ['$scope', function($scope) {
             
             $scope.mycomment = {rating:5, comment:"", author:"", date:""};
-
+            
             $scope.submitComment = function () {
+                
                 $scope.mycomment.date = new Date().toISOString();
                 console.log($scope.mycomment);
+                
                 $scope.dish.comments.push($scope.mycomment);
-
-                menuFactory.getDishes().update({id:$scope.dish.id},$scope.dish);
+                
                 $scope.commentForm.$setPristine();
+                
                 $scope.mycomment = {rating:5, comment:"", author:"", date:""};
             }
         }])
 
         // ---- TASK 2 -----
-
         // implement the IndexController and About Controller here
 
         .controller('IndexController', ['$scope', 'menuFactory', 'corporateFactory', function ($scope, menuFactory, corporateFactory) {
 
-            $scope.dish = {};
-            $scope.showDish = false;
-            $scope.message="Loading ...";
-            $scope.dish = menuFactory.getDishes().get({id:0})
-                .$promise.then(
-                    function(response){
-                        $scope.dish = response;
-                        $scope.showDish = true;
-                    },
-                    function(response) {
-                        $scope.message = "Error: "+response.status + " " + response.statusText;
-                    }
-                );
-
             // get random featured dish from array of dishes
-            //$scope.featured = menuFactory.getDish(getRandom(menuFactory.getDishes().length));
+            $scope.featured = menuFactory.getDish(getRandom(menuFactory.getDishes().length));
             $scope.promotion = menuFactory.getPromotion(0);
             $scope.execChef = corporateFactory.getLeader(3);
 

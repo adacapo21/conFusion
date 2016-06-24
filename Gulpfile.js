@@ -58,7 +58,6 @@ gulp.task('copyfonts', ['clean'], function() {
         .pipe(gulp.dest('./dist/fonts'));
 });
 
-
 // Watch
 gulp.task('watch', ['browser-sync'], function() {
     // Watch .js files

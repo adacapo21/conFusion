@@ -10,11 +10,11 @@
     <title>Ristorante Con Fusion: Menu</title>
         <!-- Bootstrap -->
     <!-- build:css styles/main.css -->
-    <!--<link href="../public/lib/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">-->
-    <!--<link href="../public/lib/bootstrap/dist/css/bootstrap-theme.min.css" rel="stylesheet">-->
-    <!--<link href="../public/lib/font-awesome/css/font-awesome.min.css" rel="stylesheet">-->
-    <!--<link href="styles/bootstrap-social.css" rel="stylesheet">-->
-    <!--<link href="styles/mystyles.css" rel="stylesheet">-->
+    <!--<link href="../../public/lib/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">-->
+    <!--<link href="../../public/lib/bootstrap/dist/css/bootstrap-theme.min.css" rel="stylesheet">-->
+    <!--<link href="../../public/lib/font-awesome/css/font-awesome.min.css" rel="stylesheet">-->
+    <!--<link href="../styles/bootstrap-social.css" rel="stylesheet">-->
+    <!--<link href="../styles/mystyles.css" rel="stylesheet">-->
     <link rel="stylesheet" href="styles/main-da8cfdb278.css"/>
     <!-- endbuild -->
 
@@ -30,10 +30,7 @@
 
     <div class="container">
         <div class="row row-content" ng-controller="MenuController">
-            <div class="col-xs-12" ng-if="!showMenu">
-                <h3>{{message}}</h3>
-            </div>
-            <div class="col-xs-12" ng-if="showMenu">
+            <div class="col-xs-12">
                 <div class="tab-content">
                     <button ng-click="toggleDetails()" class="btn btn-xs btn-primary pull-right"  type="button">
                         {{showDetails ? 'Hide Details':'Show Details'}}
@@ -64,7 +61,7 @@
                 <ul class="media-list">
                     <li class="media" ng-repeat="dish in dishes | filter:filtText">
                         <div class="media-left media-middle">
-                            <a ui-sref="app.dishdetails({id: dish.id})">
+                            <a ui-sref="app.dishdetails({id: dish._id})">
                                 <img class="media-object img-thumbnail"
                                      ng-src={{dish.image}} alt="Uthappizza">
                             </a>
@@ -81,13 +78,14 @@
         </div>
     </div>
     <!-- build:js scripts/main.js -->
-    <!--<script src="../../bower_components/angular/angular.min.js"></script>-->
+    <!--<script src="../../public/lib/angular/angular.min.js"></script>-->
     <!--<script src="../../bower_components/angular-ui-router/release/angular-ui-router.min.js"></script>-->
     <!--<script src="../../bower_components/angular-ui-router/release/angular-ui-router.js"></script>-->
     <!--<script src="../scripts/app.js"></script>-->
     <!--<script src="../scripts/controllers.js"></script>-->
     <!--<script src="../scripts/services.js"></script>-->
-    <script src="scripts/main-7cca182ac1.js"></script>
+    <script src="scripts/main-74ac31180c.js"></script>
+
     <!-- endbuild -->
 
 </body>
