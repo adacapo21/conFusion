@@ -7,21 +7,18 @@
         <div class="col-xs-12 col-sm-9 col-sm-pull-3">
             <div class="media">
                 <div class="media-left media-middle">
-                    <a href="">
-                        <img class="media-object img-thumbnail" ng-src={{featured.image}}>
+                    <a href="#">
+                        <img class="media-object img-thumbnail" ng-src="{{featured.image}}" alt="{{featured.name}}">
                     </a>
                 </div>
                 <div class="media-body">
-                    <h2 class="media-heading">{{featured.name}}
-                        <span class="label label-danger">{{featured.label}}</span>
-                        <span class="badge">${{featured.price}}</span>
-                    </h2>
+                    <h2 class="media-heading">{{featured.name}} <span class="label label-danger">{{featured.label}}</span> <span class="badge">{{featured.price | currency}}</span></h2>
                     <p>{{featured.description}}</p>
-                    <p><a class="btn btn-primary btn-xs" href="#">More &raquo;</a></p>
                 </div>
             </div>
         </div>
     </div>
+
 
     <div class="row row-content">
         <div class="col-xs-12 col-sm-3">
@@ -38,15 +35,10 @@
                     </div>
                     <h2 class="media-heading">{{promotion.name}}
                         <span class="label label-danger">{{promotion.label}}</span>
-                        <span class="badge">${{promotions.price}}</span>
+                        <span class="badge">${{promotion.price}}</span>
                     </h2>
-                    <p>{{promotions.description}}</p>
+                    <p>{{promotion.description}}</p>
                     <p><a class="btn btn-primary btn-xs" href="#">More &raquo;</a></p>
-                </div>
-                <div class="media-right media-middle">
-                    <a href="">
-                        <img class="media-object img-thumbnail" ng-src={{promotions.image}}>
-                    </a>
                 </div>
             </div>
         </div>
