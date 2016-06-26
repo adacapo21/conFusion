@@ -163,16 +163,56 @@ angular.module('confusionApp')
             //        }
             //    );
             //$scope.featured = menuFactory.getDish(getRandom(menuFactory.getDishes().length));
-            $scope.promotion = menuFactory.getPromotion(0);
-            $scope.execChef = corporateFactory.getLeader(3);
+            //----->promotion code<---------
+            //$scope.promotion = menuFactory.getPromotion(0);
+            $scope.showPromotion = false;
+            $scope.message="Loading ...";
+            $scope.promotion = menuFactory.getPromotions().get({id:0})
+                .$promise.then(
+                    function(response){
+                        $scope.promotion = response;
+                        $scope.showPromotion = true;
+                    },
+                    function(response) {
+                        $scope.promotionMessage = "Error: "+response.status + " " + response.statusText;
+                    }
+                );
 
-            function getRandom(max) {
-                return Math.floor(Math.random() * max);
-            }
+            //------->execChef<--------
+            //$scope.execChef = corporateFactory.getLeader(3);
+
+            $scope.showExecChef = false;
+            $scope.specialistMessage="Loading ...";
+            $scope.execChef = corporateFactory.getLeaders().get({id:3})
+                .$promise.then(
+                    function(response){
+                        $scope.execChef = response;
+                        $scope.showExecChef = true;
+                    },
+                    function(response) {
+                        $scope.specialistMessage = "Error: "+response.status + " " + response.statusText;
+                    }
+                );
+
+
+
         }])
         .controller('AboutController', ['$scope', 'corporateFactory', function($scope, corporateFactory) {
 
-            $scope.leadership = corporateFactory.getLeaders();
+            //$scope.leadership = corporateFactory.getLeaders();
+
+            $scope.showLeaders = false;
+            $scope.message = "Loading ...";
+
+            corporateFactory.getLeaders().query(
+                function(response){
+                    $scope.leadership = response;
+                    $scope.showLeaders = true;
+                },
+                function(response) {
+                    $scope.message = "Error: "+response.status + " " + response.statusText;
+                }
+            );
         }])
 
 
