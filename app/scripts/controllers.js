@@ -18,19 +18,6 @@ angular.module('confusionApp')
                     $scope.message = "Error: "+response.status + " " + response.statusText;
                 });
 
-            //$scope.dishes = menuFactory.getDishes().query();
-            //$scope.dishes= [];
-            //menuFactory.getDishes()
-            //    .then(
-            //        function(response) {
-            //            $scope.dishes = response.data;
-            //            $scope.showMenu = true;
-            //        },
-            //        function(response) {
-            //            $scope.message = "Error: "+response.status + " " + response.statusText;
-            //        }
-            //    );
-
                         
             $scope.select = function(setTab) {
                 $scope.tab = setTab;
@@ -69,7 +56,7 @@ angular.module('confusionApp')
                         
         }])
 
-        .controller('FeedbackController', ['$scope', function($scope) {
+        .controller('FeedbackController', ['$scope','feedbackFactory', function($scope,feedbackFactory) {
             
             $scope.sendFeedback = function() {
                 
@@ -81,6 +68,7 @@ angular.module('confusionApp')
                 }
                 else {
                     $scope.invalidChannelSelection = false;
+                    feedbackFactory.getFeedback().save($scope.feedback);
                     $scope.feedback = {mychannel:"", firstName:"", lastName:"", agree:false, email:"" };
                     $scope.feedback.mychannel="";
                     $scope.feedbackForm.$setPristine();
@@ -102,20 +90,7 @@ angular.module('confusionApp')
                         $scope.message = "Error: "+response.status + " " + response.statusText;
                     }
                 );
-            //$scope.dish = menuFactory.getDishes().get({id:parseInt($stateParams.id,10)});
-            //$scope.dish = {};
-            //$scope.showDish = false;
-            //$scope.message="Loading ...";
-            //menuFactory.getDish(parseInt($stateParams.id,10))
-            //    .then(
-            //        function(response){
-            //            $scope.dish = response.data;
-            //            $scope.showDish=true;
-            //        },
-            //        function(response) {
-            //            $scope.message = "Error: "+response.status + " " + response.statusText;
-            //        }
-            //    );
+
             
         }])
 
@@ -152,19 +127,7 @@ angular.module('confusionApp')
                         $scope.message = "Error: "+response.status + " " + response.statusText;
                     }
                 );
-            //$scope.featured = menuFactory.getDishes().get({id:0});
-            //$scope.featured = {};
-            //
-            //menuFactory.getDish(0)
-            //    .then(
-            //        function(response){
-            //            $scope.featured = response.data;
-            //            $scope.showDish = true;
-            //        }
-            //    );
-            //$scope.featured = menuFactory.getDish(getRandom(menuFactory.getDishes().length));
-            //----->promotion code<---------
-            //$scope.promotion = menuFactory.getPromotion(0);
+
             $scope.showPromotion = false;
             $scope.message="Loading ...";
             $scope.promotion = menuFactory.getPromotions().get({id:0})

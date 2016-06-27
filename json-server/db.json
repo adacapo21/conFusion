@@ -210,7 +210,18 @@
     }
   ],
   "feedback": [
-
+    {
+      "mychannel": "Email",
+      "firstName": "Angelos",
+      "lastName": "kappos",
+      "agree": true,
+      "email": "aggeloskappos@gmail.com",
+      "tel": {
+        "areaCode": "30",
+        "number": "6972304508"
+      },
+      "comments": "great restaurant!!!",
+      "id": 1
+    }
   ]
-
 }
