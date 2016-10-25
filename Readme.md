@@ -45,7 +45,9 @@ Installing the module: bower install angular-route –S
 angular.module('confusionApp', ['ui.router'])
 —--> Use the Angular UI-Router to design a SPA with multiple
 and nested views
+
 - Installing and Using ngResource
+
 Installing: bower install angular-resource –S
         Dependency injection: angular.module('confusionApp',
 ['ui.router','ngResource'])
@@ -58,6 +60,7 @@ options);
 'remove': {method:'DELETE'},
 'delete': {method:'DELETE'}
 };
+
 - Using $resource
 • Install and use Angular ngResource module
 • Use Angular  $resource to access the server that exports a REST API
